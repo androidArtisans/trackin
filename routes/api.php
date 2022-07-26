@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\RouteController;
+use App\Http\Controllers\TravelController;
+use App\Http\Controllers\TrakinController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::resource('device', DeviceController::class)->except(['create','edit']);
+Route::resource('route', RouteController::class)->except(['create','edit']);
+Route::resource('travel', TravelController::class)->except(['create','edit']);
+Route::resource('trakin', TrakinController::class)->except(['create','edit']);
 

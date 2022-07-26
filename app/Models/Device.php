@@ -9,4 +9,9 @@ class Device extends Model
 {
     use HasFactory;
     protected $fillable = ['mac_address','type'];
+
+    /*public function travels()
+    {
+        return $this->hasMany(Travel::class);
+    }*/
 }

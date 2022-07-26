@@ -1,8 +1,7 @@
 <template>
     <div>
-        <h1>Lista de Dispositivos
-        
-            <router-link :to="{ name: 'create' }">
+        <h2>Dispositivos
+            <router-link :to="{ name: 'create' }" custom>
             <v-btn
             :rounded="0"
             color="primary"
@@ -11,24 +10,8 @@
             >Nuevo
             </v-btn></router-link>
             
-        </h1>
-        
-
-        <!--<o-table :data="devices.length == 0 ? [] : devices" >
-            <o-table-column field = "id" label = "ID" numeric v-slot="p">
-                {{ p.row.id }}
-            </o-table-column>
-            <o-table-column field = "code" label = "Mac Address" v-slot="p">
-                {{ p.row.mac_address }}
-            </o-table-column>
-            <o-table-column field = "type" label = "Tipo" v-slot="p">
-                {{ p.row.type }}
-            </o-table-column>
-            <o-table-column field = "slug" label = "Acciones" v-slot="p">
-                <router-link :to="{ name: 'create', params: {'slug': p.row.id} }">Edit</router-link>
-                <o-button variant="danger" @click="deletePost(p)">Eliminar</o-button>
-            </o-table-column>
-        </o-table>-->
+        </h2>
+    
         <v-table>
             <thead>
             <tr>
@@ -44,8 +27,8 @@
             >
                 <td>{{ device.mac_address }}</td>
                 <td>{{ device.type }}</td>
-                <td><router-link :to="{ name: 'create', params: {'slug':device.id} }">
-                <v-icon color="blue darken-2" >mdi-pencil</v-icon>
+                <td><router-link :to="{ name: 'create', params: {'slug':device.id} }" custom v-slot="{ navigate }" >
+                <v-icon @click="navigate" color="blue-grey darken-2" role="link" >mdi-pencil</v-icon>
                     
                 </router-link>
          
