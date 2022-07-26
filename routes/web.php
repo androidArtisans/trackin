@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::get('/vue/{slug?}', function(){
     return view('vue');
 });
+

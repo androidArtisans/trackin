@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Travel;
+use App\Models\Trakin;
 use Illuminate\Http\Request;
 
 class TravelController extends Controller
@@ -16,16 +17,6 @@ class TravelController extends Controller
     {
         $travel = Travel::all();
         return response()->json($travel); 
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -51,17 +42,6 @@ class TravelController extends Controller
     public function show(Travel $travel)
     {
         return response()->json($travel);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Travel  $travel
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Travel $travel)
-    {
-        //
     }
 
     /**
@@ -91,5 +71,33 @@ class TravelController extends Controller
         return response()->json([
             'message' => 'DELETED SUCCESSFULLY'
         ]);
+    }
+
+    /**
+     * Display a listing of the travel by code.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function findByCode(Request $request)
+    {
+        $travel = Travel::where('code',$request->code)->with('trakins')->get();
+        return response()->json($travel); 
+    }
+
+    /**
+     * Display a listing of the travel by code.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function findLastTrakinByCode(Request $request)
+    {
+        $travel = Travel::where('code',$request->code)->get()->first();
+        
+            $trackin = Trakin::where('travel_id',$travel->id)
+            ->orderBy('id','desc')
+            ->get()
+            ->first();
+    
+        return response()->json($trackin); 
     }
 }

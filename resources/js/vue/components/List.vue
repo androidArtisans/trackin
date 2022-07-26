@@ -1,12 +1,13 @@
 <template>
     <div>
         <h2>Dispositivos
-            <router-link :to="{ name: 'create' }" custom>
+            <router-link :to="{ name: 'create' }" custom v-slot="{ navigate }">
             <v-btn
             :rounded="0"
             color="primary"
             size="small"
             prepend-icon="mdi-plus-box"
+            @click="navigate"
             >Nuevo
             </v-btn></router-link>
             
@@ -32,7 +33,7 @@
                     
                 </router-link>
          
-                <v-icon color='blue-grey darken-2' @click="deletePost(p)" >mdi-delete</v-icon>
+                <v-icon color='blue-grey darken-2' @click="deletePost(device.id)" >mdi-delete</v-icon>
                    </td> 
                 
             </tr>
@@ -52,15 +53,16 @@
     async mounted() {
         this.$axios.get('/api/device').then((res) => {
             this.devices = res.data;
-            console.log(this.devices);
             this.loading = false;
         })
     },
     methods:{
-        deletePost(row){
+        deletePost(id, row){
+            console.log(row);
             //console.log(device);
-            this.devices.splice(row.index,1);
-            this.$axios.delete('/api/device/' + row.row.id);
+            //this.devices.splice(row.index,1);
+            //this.$axios.delete('/api/device/' + id);
+            //mounted();
         }
     }
   }

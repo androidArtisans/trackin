@@ -27,3 +27,6 @@ Route::resource('route', RouteController::class)->except(['create','edit']);
 Route::resource('travel', TravelController::class)->except(['create','edit']);
 Route::resource('trakin', TrakinController::class)->except(['create','edit']);
 
+Route::get('findByCode/{code}', [TravelController::class,'findByCode']);
+Route::get('findLastTrakinByCode/{code}', [TravelController::class,'findLastTrakinByCode']);
+
