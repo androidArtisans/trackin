@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Viajes</h2>
+        <h2>Trackin</h2>
     
         <v-table>
             <thead>

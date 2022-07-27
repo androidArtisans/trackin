@@ -20,16 +20,6 @@ class TrakinController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -37,18 +27,15 @@ class TrakinController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        /*$travel = Travel::where('code',$request->code)->get()->first();
+        $request['travel_id'] = $travel->id;*/
+        
+        /*$trakin = Trakin::create($request->post());
+        return response()->json([
+            'trakin' => $trakin
+        ]);*/
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Trakin  $trakin
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Trakin $trakin)
-    {
-        //
+        return "hello";
     }
 
     /**
@@ -99,5 +86,18 @@ class TrakinController extends Controller
             ->get();
     
         return response()->json($trackin); 
+    }
+
+    public function createTrakin(Request $request)
+    {
+        /*$travel = Travel::where('code',$request->code)->get()->first();
+        $request['travel_id'] = $travel->id;*/
+        
+        /*$trakin = Trakin::create($request->post());
+        return response()->json([
+            'trakin' => $trakin
+        ]);*/
+
+        return "hello";
     }
 }

@@ -43,5 +43,6 @@ app.component('Datepicker', Datepicker);
 
 app.config.globalProperties.$axios = axios;
 window.axios = axios;
+axios.defaults.baseURL = 'https://laravel-zwhc.frb.io';
 
 app.mount("#app")
