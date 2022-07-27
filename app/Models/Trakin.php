@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Trakin extends Model
 {
     use HasFactory;
-    protected $fillable = ['message_date','message_type','travel_id'];
+    protected $fillable = ['register_point_date','message_type','message','latitude','longitude','travel_id'];
     protected $with = ['travel'];
 
     public function travel()

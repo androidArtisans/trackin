@@ -6,6 +6,7 @@ import ListRoute from './components/route/List';
 import CreateRoute from './components/route/Create';
 import ListTravel from './components/travel/List';
 import CreateTravel from './components/travel/Create';
+import ListTrakin from './components/trackin/List';
 
 const routes = [
     {
@@ -37,6 +38,11 @@ const routes = [
         name: 'createTravel',
         path: '/vue',
         component: CreateTravel
+    },
+    {
+        name: 'listTrakin',
+        path: '/vue',
+        component: ListTrakin
     },
 ];
 

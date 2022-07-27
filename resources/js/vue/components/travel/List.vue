@@ -18,9 +18,9 @@
             <tr>
                 <th class="text-left">Código</th>
                 <th class="text-left">Tramo</th>
-                <th class="text-left">Salida</th>
-                <th class="text-left">Estado</th>
-                <th class="text-left">Acciones</th>
+                <th class="text-center">Salida</th>
+                <th class="text-center">Estado</th>
+                <th class="text-right">Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -28,12 +28,26 @@
                 v-for="(travel, key) in travels"
                 :key="travel.id"
             >
-                <td>{{ travel.code }}</td>
-                <td>{{ travel.route.name }}</td>
-                <td>{{ travel.departure }}</td>
-                <td>{{ travel.status }}</td>
-                
                 <td>
+                    <v-chip
+                    class="ma-2"
+                    >
+                    {{ travel.code }}
+                    </v-chip>
+                </td>
+                <td>{{ travel.route.name }}</td>
+                <td class="text-center">{{ travel.departure }}</td>
+                <td class="text-center">
+                    <v-chip
+                        class="ma-2"
+                        color="primary"
+                        label
+                    >
+                    <v-icon start icon="mdi-clock-outline"></v-icon>
+                    {{ travel.status }}
+                    </v-chip>
+                </td>
+                <td class="text-right">
                     <router-link :to="{ name: 'createTravel', params: {'slug':travel.id} }" custom v-slot="{ navigate }" >
                         <v-icon @click="navigate" color="blue-grey darken-2" role="link" >mdi-pencil</v-icon>
                     </router-link>

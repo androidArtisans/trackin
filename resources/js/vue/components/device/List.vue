@@ -16,9 +16,10 @@
         <v-table>
             <thead>
             <tr>
+                <th class="text-left">Nombre</th>
                 <th class="text-left">Mac Address</th>
-                <th class="text-left">Tipo</th>
-                <th class="text-left">Acciones</th>
+                <th class="text-center">Tipo</th>
+                <th class="text-right">Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -26,9 +27,10 @@
                 v-for="(device, key) in devices"
                 :key="device.id"
             >
+                <td>{{ device.name }}</td>
                 <td>{{ device.mac_address }}</td>
-                <td>{{ device.type }}</td>
-                <td><router-link :to="{ name: 'create', params: {'slug':device.id} }" custom v-slot="{ navigate }" >
+                <td class="text-center">{{ device.type }}</td>
+                <td class="text-right"><router-link :to="{ name: 'create', params: {'slug':device.id} }" custom v-slot="{ navigate }" >
                 <v-icon @click="navigate" color="blue-grey darken-2" role="link" >mdi-pencil</v-icon>
                     
                 </router-link>

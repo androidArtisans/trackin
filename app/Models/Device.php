@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Device extends Model
 {
     use HasFactory;
-    protected $fillable = ['mac_address','type'];
+    protected $fillable = ['name','mac_address','type'];
 
     /*public function travels()
     {

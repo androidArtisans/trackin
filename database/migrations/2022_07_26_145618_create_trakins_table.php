@@ -15,8 +15,9 @@ class CreateTrakinsTable extends Migration
     {
         Schema::create('trakins', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('message_date');
+            $table->dateTimeTz('register_point_date', $precision = 0);
             $table->string('message_type');//automatic,manual
+            $table->string('message');
             $table->decimal('latitude',10,8);
             $table->decimal('longitude',11,8);
             $table->foreignId('travel_id')->constrained('travel');

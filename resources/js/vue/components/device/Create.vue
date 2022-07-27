@@ -14,20 +14,26 @@
         lazy-validation
         >
             <v-text-field
+            v-model="form.name"
+            :counter="50"
+            :rules="[v => !!v || 'Tipo is required']"
+            label="Nombre"
+            required
+            ></v-text-field> 
+            <v-text-field
             v-model="form.mac_address"
             :counter="50"
             :rules="macRules"
             label="Mac Address"
             required
             ></v-text-field>    
-            <v-text-field
-            v-model="form.type"
-            :counter="50"
-            :rules="[v => !!v || 'Tipo is required']"
-            label="Tipo"
-            required
-
-            ></v-text-field>    
+            <v-select
+                :items="type"
+                item-title="text"
+                item-value="value"
+                v-model="form.type"
+                label="Tipo de Dispositivo"
+            ></v-select>      
 
             <v-btn
             color="primary"
@@ -54,6 +60,7 @@ export default {
     data(){
         return {
             form:{
+                name: "",
                 mac_address: "",
                 type: ""
             },
@@ -67,7 +74,22 @@ export default {
                 v => !!v || 'Mac Address is required',
                 v => (v && v.length <= 50) || 'Name must be less than 10 characters',
             ],
-            title: "Crear"
+            title: "Crear",
+            type: [
+                {
+                    text: "Celular",
+                    value: "Celular"
+                },
+                {
+                    text: "Tablet",
+                    value: "tablet"
+                },
+                {
+                    text: "Otros",
+                    value: "Otros"
+                }
+
+            ]
         }
     },
     async mounted(){
@@ -116,6 +138,7 @@ export default {
             this.post = this.post.data;
         },
         initPost(){
+            this.form.name = this.post.name;
             this.form.mac_address = this.post.mac_address;
             this.form.type = this.post.type;
         }

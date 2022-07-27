@@ -37,13 +37,13 @@
                     >
                     </Datepicker>
                 
-                    <v-text-field
+                    <v-select
+                    :items="status"
+                    item-title="text"
+                    item-value="value"
                     v-model="form.status"
-                    :counter="50"
-                    :rules="[v => !!v || 'Estado is required']"
                     label="Estado"
-                    required
-                    ></v-text-field>    
+                    ></v-select>  
 
                     <v-btn
                     color="primary"
@@ -77,6 +77,20 @@ export default {
             instance: '',
             devices: [],
             routes: [],
+            status: [
+                {
+                    value: 'Pendiente',
+                    text: 'Pendiente'
+                },
+                {
+                    value: 'Iniciado',
+                    text: 'Iniciado'
+                },
+                {
+                    value: 'Concluido',
+                    text: 'Concluido'
+                },
+            ],
             valid: true,
             title: "Crear"
         }

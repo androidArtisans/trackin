@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Trakin;
+use App\Models\Travel;
 use Illuminate\Http\Request;
 
 class TrakinController extends Controller
@@ -14,7 +15,8 @@ class TrakinController extends Controller
      */
     public function index()
     {
-        //
+        $trakin = Trakin::all();
+        return response()->json($trakin); 
     }
 
     /**
@@ -81,5 +83,21 @@ class TrakinController extends Controller
     public function destroy(Trakin $trakin)
     {
         //
+    }
+
+    /**
+     * Display a listing of the trackin by code travel.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getTrackinByTravel(Request $request)
+    {
+        $travel = Travel::where('code',$request->code)->get()->first();
+        
+            $trackin = Trakin::where('travel_id',$travel->id)
+            ->orderBy('id','desc')
+            ->get();
+    
+        return response()->json($trackin); 
     }
 }

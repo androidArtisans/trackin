@@ -43,8 +43,9 @@
             <router-link :to="{ name: 'listTravel' }" custom v-slot="{ navigate }">
                 <v-list-item prepend-icon="mdi-map-search" title="Viajes" @click="navigate" ></v-list-item>
             </router-link>
-            
-          <v-list-item prepend-icon="mdi-message-processing" title="Mensajes" value="starred"></v-list-item>
+            <router-link :to="{ name: 'listTrakin' }" custom v-slot="{ navigate }">
+                <v-list-item prepend-icon="mdi-map-marker" title="Trackin" @click="navigate" ></v-list-item>
+            </router-link>
         </v-list>
       </v-navigation-drawer>
 
