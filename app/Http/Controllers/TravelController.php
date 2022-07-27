@@ -27,6 +27,9 @@ class TravelController extends Controller
      */
     public function store(Request $request)
     {
+        /*$travel = $request->post();
+        $travel['departure'] = strtotime($travel['departure']);
+        return $travel;*/
         $travel = Travel::create($request->post());
         return response()->json([
             'travel' => $travel

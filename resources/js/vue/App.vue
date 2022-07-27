@@ -21,7 +21,7 @@
       </v-app-bar>
       <v-navigation-drawer
         v-model="drawer"
-        temporary
+        permanent
       >
         <v-list>
           <v-list-item
@@ -34,9 +34,16 @@
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-          <v-list-item prepend-icon="mdi-tablet-cellphone" title="Dispositivos" value="myfiles"></v-list-item>
-            <v-list-item prepend-icon="mdi-map-marker-distance" title="Rutas" value="myfiles"></v-list-item>
-          <v-list-item prepend-icon="mdi-map-search" title="Seguimiento" value="shared"></v-list-item>
+            <router-link :to="{ name: 'list' }" custom v-slot="{ navigate }">
+                <v-list-item prepend-icon="mdi-tablet-cellphone" title="Dispositivos" @click="navigate" ></v-list-item>
+            </router-link>
+            <router-link :to="{ name: 'listRoute' }" custom v-slot="{ navigate }">
+                <v-list-item prepend-icon="mdi-map-marker-distance" title="Rutas" @click="navigate" ></v-list-item>
+            </router-link>
+            <router-link :to="{ name: 'listTravel' }" custom v-slot="{ navigate }">
+                <v-list-item prepend-icon="mdi-map-search" title="Viajes" @click="navigate" ></v-list-item>
+            </router-link>
+            
           <v-list-item prepend-icon="mdi-message-processing" title="Mensajes" value="starred"></v-list-item>
         </v-list>
       </v-navigation-drawer>
@@ -70,6 +77,11 @@
       return {
         drawer: null,
       }
-    },
+    }/*,
+    methods:{
+        devices(){
+            this.$router.push('/list')
+        }
+    }*/
   }
 </script>

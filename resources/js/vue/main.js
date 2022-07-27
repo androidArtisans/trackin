@@ -1,3 +1,6 @@
+import Datepicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
+
 import 'vuetify/styles' // Global CSS has to be imported
 import { createApp } from "vue";
 import { createVuetify } from 'vuetify'
@@ -36,6 +39,7 @@ const vuetify = createVuetify({
 });
 
 app.use(vuetify)
+app.component('Datepicker', Datepicker);
 
 app.config.globalProperties.$axios = axios;
 window.axios = axios;

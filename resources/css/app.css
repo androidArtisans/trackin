@@ -1,0 +1,9 @@
+.datetime div div input{
+    background: #f6f6f6;
+    border-radius: 0;
+    border-bottom: 2px solid #ccc;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-bottom: 20px;
+}

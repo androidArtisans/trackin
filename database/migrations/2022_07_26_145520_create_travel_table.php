@@ -16,7 +16,7 @@ class CreateTravelTable extends Migration
         Schema::create('travel', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->timestamp('departure');
+            $table->dateTimeTz('departure', $precision = 0);
             $table->string('status');
             $table->foreignId('device_id')->constrained('devices');
             $table->foreignId('route_id')->constrained('routes');

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Travel extends Model
 {
     use HasFactory;
-    protected $fillable = ['code', 'departure','device_id','route_id'];
+    protected $fillable = ['code', 'departure','device_id','route_id','status'];
     protected $with = ['device','route'];
     
     public function device()
