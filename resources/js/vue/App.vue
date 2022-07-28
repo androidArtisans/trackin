@@ -46,6 +46,9 @@
             <router-link :to="{ name: 'listTrakin' }" custom v-slot="{ navigate }">
                 <v-list-item prepend-icon="mdi-map-marker" title="Trackin" @click="navigate" ></v-list-item>
             </router-link>
+            <router-link :to="{ name: 'map' }" custom v-slot="{ navigate }">
+                <v-list-item prepend-icon="mdi-truck-fast" title="Seguimiento" @click="navigate" ></v-list-item>
+            </router-link>
         </v-list>
       </v-navigation-drawer>
 
