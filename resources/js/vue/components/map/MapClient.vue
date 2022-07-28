@@ -12,6 +12,9 @@
             <v-btn x-large color="primary" dark @click="updateMap">
                 Search
             </v-btn>
+            <v-btn x-large color="primary" dark @click="refreshMap">
+                Refresh
+            </v-btn>
         </v-col>
     </v-row>
 
@@ -69,6 +72,7 @@ export default {
                 color: 'orange'
             },
             zoom: 13,
+            lastCodeSearch:0,
             codeSearch:0,
             trakins:[]
         };
@@ -79,12 +83,11 @@ export default {
     methods: {
         updateMap() {
             this.$axios.get(`/api/getTrackinByTravel/${this.codeSearch}`).then((res) => {
-                var data = res.data;
+                var data = res.data;                
                 data.forEach(track => {
                     this.trakins.push([track.latitude,track.longitude]);
                 });
-                this.drawPolyline();
-                this.refreshMap();
+                this.drawPolyline();                
                 console.log(this.trakins)
             });
             
@@ -97,7 +100,9 @@ export default {
             this.updateMap();
         },
         refreshMap(){
-            this.mapKey +=1;
+            this.mapKey +=1;   
+            this.trakins = [];  
+            this.drawPolyline();       
         }
     },
 };
